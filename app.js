@@ -1,8 +1,8 @@
 var http = require('http');
 var sio = require('socket.io');
-var redisOpts = { host: '127.0.0.1', port: 6379 };
-var sub = require('redis').createClient(redisOpts);
-var redis = require('redis').createClient(redisOpts);
+var config = require('./config');
+var sub = require('redis').createClient(config.redis);
+var redis = require('redis').createClient(config.redis);
 
 var server = http.createServer(function (req, res) {
   res.setHeader('Content-Type', 'text/plain');
@@ -13,7 +13,7 @@ var sessionTTL = 1 * 60; // 1 minute (in seconds)
 
 var io = sio(server);
 
-io.adapter(require('socket.io-redis')(redisOpts));
+io.adapter(require('socket.io-redis')(config.redis));
 
 io.on('connection', function (socket) {
   console.log('socket %j connected', socket.id);

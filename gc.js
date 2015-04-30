@@ -1,6 +1,6 @@
-var redisOpts = { host: '127.0.0.1', port: 6379 };
-var sub = require('redis').createClient(redisOpts);
-var redis = require('redis').createClient(redisOpts);
+var config = require('./config');
+var sub = require('redis').createClient(config.redis);
+var redis = require('redis').createClient(config.redis);
 
 sub.on('psubscribe', function (pattern, count) {
   console.log('"psubscribe" event. pattern=%j count=%j', pattern, count);
