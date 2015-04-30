@@ -18,6 +18,7 @@ io.adapter(require('socket.io-redis')(redisOpts));
 io.on('connection', function (socket) {
   console.log('socket %j connected', socket.id);
 
+  // the client sends a "viewing" event upon connection
   socket.on('viewing', function(postId) {
     console.log('%j is viewing post ID %j', socket.id, postId);
 
@@ -30,16 +31,20 @@ io.on('connection', function (socket) {
       .sadd('viewers:' + postId, socket.id)
       .exec(function (err, results) {
         if (err) throw err;
-        console.log(arguments);
+        // at this point, the ":viewers:*" Redis subscription (defined below)
+        // will be invoked since we did `SADD viewers:[postId] [socket.id]`,
+        // and all connected clients will be notified of the updated viewer count
       });
   });
 
+  // delete the Session key from Redis upon "disconnect".
+  // the GC script takes care of removing the `viewers` hash entry,
+  // and removing the `viewers:[postId]` set entry for this session ID
   socket.on('disconnect', function () {
     console.log('%j disconnected', socket.id);
 
     redis.del('session:' + socket.id, function (err, result) {
       if (err) throw err;
-      console.log(arguments);
     });
   });
 
@@ -53,7 +58,6 @@ sub.on('pmessage', function (pattern, channel, message) {
   var postId = channel.split(':').pop();
   redis.scard('viewers:' + postId, function (err, count) {
     if (err) throw err;
-    console.log(arguments);
     io.emit('viewers', postId, count);
   });
 });
