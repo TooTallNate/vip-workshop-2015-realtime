@@ -14,8 +14,11 @@ this post?**
 
 The solution? Socket.IO and Redis.
 
-![Socket.IO](http://cdn.socket.io/website/imgs/logo.svg)
-![Redis](http://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg)
+<center>
+<img src="http://cdn.socket.io/website/imgs/logo.svg" width="50%" /><br>
++<br>
+<img src="http://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40%" />
+</center>
 
 
 ### Redis Schema
