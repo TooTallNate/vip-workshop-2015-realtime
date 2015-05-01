@@ -5,4 +5,6 @@ exports.redis = {
 };
 
 // How long (in seconds) to persist the "post viewing" sesion in Redis
-exports.sessionTTL = 60 * 60 * 24 * 3; // 3 days seems reasonable…
+// Setting to 11 minutes on the server-side, since the client-side refreshes
+// the session every 10 minutes, so just over the refresh timeout
+exports.sessionTTL = 60 * 11;
