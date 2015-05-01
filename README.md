@@ -14,11 +14,11 @@ this post?**
 
 The solution? Socket.IO and Redis.
 
-<center>
-<img src="http://cdn.socket.io/website/imgs/logo.svg" width="50%" /><br>
-+<br>
-<img src="http://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40%" />
-</center>
+<div style="text-align: center">
+  <img src="http://cdn.socket.io/website/imgs/logo.svg" width="50%" /><br>
+  +<br>
+  <img src="http://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40%" />
+</div>
 
 
 ### Redis Schema
