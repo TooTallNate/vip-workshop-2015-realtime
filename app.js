@@ -9,8 +9,6 @@ var server = http.createServer(function (req, res) {
   res.end('This is a socket.io "Presence" server for VIP WordPress.com!\n');
 });
 
-var sessionTTL = 1 * 60; // 1 minute (in seconds)
-
 var io = sio(server);
 
 io.adapter(require('socket.io-redis')(config.redis));
@@ -24,7 +22,7 @@ io.on('connection', function (socket) {
 
     redis.multi()
       // update session with refreshed TTL and set value to current post id
-      .setex('session:' + socket.id, sessionTTL, String(postId))
+      .setex('session:' + socket.id, config.sessionTTL, String(postId))
       // update the global session -> postid hash with current post id
       .hset('viewers', socket.id, String(postId))
       // update the postid-specific viewers Set to contain this socket.id
