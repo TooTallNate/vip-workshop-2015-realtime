@@ -14,11 +14,14 @@ this post?**
 
 The solution? Socket.IO and Redis.
 
-<div style="text-align: center">
-  <img src="http://cdn.socket.io/website/imgs/logo.svg" width="50%" /><br>
-  +<br>
-  <img src="http://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="40%" />
-</div>
+## Socket.IO
+
+[<img src="http://cdn.socket.io/website/imgs/logo.svg" width="50%" />](http://socket.io)
+
+
+## Redis
+
+[<img src="http://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg" width="50%" />](http://redis.io)
 
 
 ### Redis Schema
@@ -26,3 +29,20 @@ The solution? Socket.IO and Redis.
  * `viewers` - Hash
  * `viewers:<post-id>` - Set
  * `session:<socket-id>` - String, with 11 minute expiration TTL
+
+
+--------------------
+
+## Installation
+
+``` bash
+$ git clone git://github.com/TooTallNate/vip-workshop-2015-realtime.git
+$ cd vip-workshop-2015-realtime
+$ npm install
+$ node app &   # spawn application server
+$ node gc &    # spawn "garbage collection" server
+```
+
+### `app.js` - Application "Presence" Server
+
+### `gc.js` - "Garbage Collection" Server
