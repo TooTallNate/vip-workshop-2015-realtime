@@ -9,8 +9,9 @@ the web browser connect to a Node.js socket.io server hosted
 somewhere on your infrastructure.
 
 In this particular example, we add realtime "presence"
-capabilities. That is, **how many other people are viewing
-this post?**
+capabilities. That is:
+
+> **How many other people are viewing this post?**
 
 The solution? Socket.IO and Redis.
 
