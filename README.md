@@ -26,9 +26,45 @@ The solution? Socket.IO and Redis.
 
 ### Redis Schema
 
- * `viewers` - Hash
- * `viewers:<post-id>` - Set
- * `session:<socket-id>` - String, with 11 minute expiration TTL
+#### `viewers` - Hash
+
+Hash that contains _all_ sessions as keys, and their last known
+post being viewed at the value.
+
+Used when a session is expired/deleted to look up the last known
+post that the user was viewing, so that the corresponding
+`viewers:<post-id>` Set can have its entry removed.
+
+```
+127.0.0.1:6379> HGETALL viewers
+1) "mXbcRrQtsjpdKbmsAAAX"
+2) "13"
+```
+
+#### `viewers:<post-id>` - Set
+
+Set that contains all the session IDs that are currently viewing `post-id`.
+
+Used to get the overall "presence" count for a given post.
+
+```
+127.0.0.1:6379> SMEMBERS viewers:13
+1) "mXbcRrQtsjpdKbmsAAAX"
+```
+
+#### `session:<socket-id>` - String
+
+String with an 11 minute expiration time (TTL, configurable in `./config.js`).
+The contents of the string are not actually used, instead the existence of
+the key is enough to signify that the session is still "alive".
+
+Used to create and destroy "session" instances. Redis' EXPIRES command is
+leveraged to have the database expire the keys automatically.
+
+```
+127.0.0.1:6379> GET session:mXbcRrQtsjpdKbmsAAAX
+"13"
+```
 
 
 --------------------
