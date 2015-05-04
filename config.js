@@ -4,6 +4,9 @@ exports.redis = {
   port: 6379
 };
 
+// app.js port to bind Socket.IO server to
+exports.bind = 3000;
+
 // How long (in seconds) to persist the "post viewing" sesion in Redis
 // Setting to 11 minutes on the server-side, since the client-side refreshes
 // the session every 10 minutes, so just over the refresh timeout

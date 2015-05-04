@@ -64,6 +64,6 @@ sub.psubscribe('__keyspace*__:viewers:*');
 
 
 // bind HTTP server
-server.listen(3000, function (err) {
+server.listen(config.bind, function (err) {
   console.log('IO server listening on port %d', server.address().port);
 });
