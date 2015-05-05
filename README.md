@@ -19,6 +19,11 @@ The solution? Socket.IO and Redis.
 
 [<img src="http://cdn.socket.io/website/imgs/logo.svg" width="50%" />](http://socket.io)
 
+Socket.IO is a realtime application server, written in JavaScript for Node.js.
+It allows bi-directional event-based message passing between connected clients
+and the server. Similar in concept to WebSockets, but Socket.IO offers features
+common to realtime applications like reconnection and packet buffering.
+
 
 ## Redis
 
@@ -70,7 +75,7 @@ leveraged to have the database expire the keys automatically.
 
 --------------------
 
-## Installation
+## Quick Start
 
 ``` bash
 $ git clone git://github.com/TooTallNate/vip-workshop-2015-realtime.git
@@ -81,5 +86,11 @@ $ node gc &    # spawn "garbage collection" server
 ```
 
 ### `app.js` - Application "Presence" Server
+
+The first piece of this example is the "application server", which is the actual
+Socket.IO server.
+
+When a new Socket.IO connection is established, the client side sends a "
+
 
 ### `gc.js` - "Garbage Collection" Server
