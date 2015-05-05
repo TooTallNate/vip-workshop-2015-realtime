@@ -5,7 +5,8 @@
  */
 
 var socket = io('http://198.199.108.45:3000');
-var presence = jQuery('#presence');
+var viewers = jQuery('#viewers b');
+var viewerCount = jQuery('#view-count b');
 var viewingTimeout;
 
 /**
@@ -30,7 +31,14 @@ socket.on('connect', function () {
 socket.on('viewers', function (id, count) {
 	console.log('"viewers" event, id=%j count=%j', id, count);
 	if (id === post.post_id) {
-		presence.text(count);
+		viewers.text(count);
+	}
+});
+
+socket.on('view count', function (id, count) {
+	console.log('"view count" event, id=%j count=%j', id, count);
+	if (id === post.post_id) {
+		viewCount.text(count);
 	}
 });
 

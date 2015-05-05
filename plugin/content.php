@@ -29,7 +29,8 @@
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
                                 ?>
-				<span id="presence">0</span>
+				<div id="viewers">Viewers: <b></b></div>
+				<div id="view-count">View Count: <b></b></div>
 				<?php
 			else :
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
