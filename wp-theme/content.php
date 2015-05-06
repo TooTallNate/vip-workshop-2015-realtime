@@ -14,7 +14,6 @@
 		wp_enqueue_script( 'socket.io', '//cdn.socket.io/socket.io-1.3.5.js', array(), '1.3.5', true );
 		wp_enqueue_script( 'socket.io-presence', plugins_url( 'presence.js', __FILE__ ), array(), '0.0.0', true );
 		wp_localize_script( 'socket.io-presence', 'post' , array( 'post_id'=>$post->ID ) );
-		wp_enqueue_script( 'socket.io-presence' );
 	endif;
 ?>
 
