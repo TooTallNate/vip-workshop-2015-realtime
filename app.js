@@ -57,7 +57,7 @@ io.on('connection', function (socket) {
 });
 
 
-// subscribe to Redis "viewers:*" keyspace events
+// subscribe to Redis "viewers:*" and "views:*" keyspace events
 sub.on('pmessage', function (pattern, channel, message) {
   console.log('"pmessage" event. pattern=%j channel=%j message=%j', pattern, channel, message);
 
