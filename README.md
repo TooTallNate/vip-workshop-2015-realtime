@@ -77,6 +77,10 @@ leveraged to have the database expire the keys automatically.
 
 ## Quick Start
 
+Redis and Node.js are required to be in your `$PATH` on the server
+that will run this Socket.IO application code.
+
+
 ``` bash
 $ git clone git://github.com/TooTallNate/vip-workshop-2015-realtime.git
 $ cd vip-workshop-2015-realtime
