@@ -12,3 +12,8 @@
 .single .entry-header .view-count {
   margin-bottom: 1.2em;
 }
+
+.single .entry-header .viewers,
+.single .entry-header .view-count {
+  font-size: 0.7em;
+}
